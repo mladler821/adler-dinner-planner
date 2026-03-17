@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  /* Weekday / cooking greens */
+  --color-primary: #1D9E75;
+  --color-primary-light: #E1F5EE;
+  --color-primary-border: #5DCAA5;
+  --color-primary-dark: #085041;
+
+  /* Weekend / restaurant blues */
+  --color-weekend: #185FA5;
+  --color-weekend-light: #E6F1FB;
+  --color-weekend-border: #85B7EB;
+  --color-weekend-dark: #0C447C;
+
+  /* Family member colors */
+  --color-matt-bg: #E6F1FB;
+  --color-matt-text: #0C447C;
+  --color-amanda-bg: #FBEAF0;
+  --color-amanda-text: #72243E;
+  --color-jaden-bg: #FAEEDA;
+  --color-jaden-text: #633806;
+  --color-adalynn-bg: #EEEDFE;
+  --color-adalynn-text: #3C3489;
+
+  /* Veto */
+  --color-veto-bg: #FCEBEB;
+  --color-veto-border: #F5C6C6;
+  --color-veto-text: #A32D2D;
+}
+
+/* WHY: fadeIn is used by AddOptionModal for a lightweight overlay entrance.
+   Defined globally so Tailwind's arbitrary animate-[] utility can reference it. */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #F8F9FA;
+  color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+}

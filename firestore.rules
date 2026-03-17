@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // WHY: No auth required — this is a trust-based family app where
+    // members pick their identity via an avatar switcher. Firestore is
+    // used purely for real-time sync across devices, not access control.
+    match /families/{familyId} {
+      allow read, write: if true;
+
+      // Weekly data and options
+      match /weeks/{weekId} {
+        allow read, write: if true;
+      }
+
+      match /weeks/{weekId}/options/{optionId} {
+        allow read, write: if true;
+      }
+
+      // Meal history: append-only (no deletes)
+      match /history/{entryId} {
+        allow read: if true;
+        allow create: if true;
+        // WHY: History is append-only to prevent accidental loss of past meal records
+        allow update, delete: if false;
+      }
+    }
+  }
+}
